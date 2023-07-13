@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Calculator</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <style>
+        .calculator {
+            max-width: 300px;
+            margin: 0 auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+        }
+
+        .trisha2 {
+            margin-bottom: 10px;
+            padding: 10px;
+            text-align: right;
+        }
+
+        .button {
+            width: 50px;
+            height: 50px;
+            margin: 2px;
+        }
+
+        .trisha {
+            color: blueviolet;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="trisha">
+        <div class="row">
+            <div class="col">
+                <h1>This is my Calculator</h1>
+            </div>
+
+        </div>
+    </div>
+    <div class="row mt-5">
+        <div class="calculator">
+
+
+            <div class="trisha2">
+                <input type="text" id="result" disabled>
+            </div>
+            <div class="row">
+                <div class="col-md-3">
+                    <input type="button" onclick="setDisplay('7')" value="7" class="button btn btn-secondary number">
+                </div>
+
+                <div class="col-md-3">
+                    <input type="button" onclick="setDisplay('8')" value="8" class="button btn btn-secondary number">
+                </div>
+                <div class="col-md-3">
+                    <input type="button" onclick="setDisplay('9')" value="9" class="button btn btn-secondary number">
+                </div>
+                <div class="col-md-3">
+                    <input type="button" onclick="setDisplay('/')" value="/" class="button btn btn-secondary operator">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-3">
+                    <input type="button" onclick="setDisplay('4')" value="4" class="button btn btn-secondary number">
+                </div>
+                <div class="col-md-3">
+                    <input type="button" onclick="setDisplay('5')" value="5" class="button btn btn-secondary number">
+                </div>
+                <div class="col-md-3">
+                    <input type="button" onclick="setDisplay('6')" value="6" class="button btn btn-secondary number">
+                </div>
+                <div class="col-md-3">
+                    <input type="button" onclick="setDisplay('*')" value="*" class="button btn btn-primary operator">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-3">
+                    <input type="button" onclick="setDisplay('1')" value="1" class="button btn btn-secondary number">
+                </div>
+                <div class="col-md-3">
+                    <input type="button" onclick="setDisplay('2')" value="2" class="button btn btn-secondary number">
+                </div>
+                <div class="col-md-3">
+                    <input type="button" onclick="setDisplay('3')" value="3" class="button btn btn-secondary number">
+                </div>
+                <div class="col-md-3">
+                    <input type="button" onclick="setDisplay('-')" value="-" class="button btn btn-primary operator">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-3">
+                    <input type="button" onclick="setDisplay('0')" value="0" class="button btn btn-secondary number">
+                </div>
+                <div class="col-md-3">
+                    <input type="button" onclick="setDisplay('.')" value="." class="button btn btn-primary operator">
+                </div>
+                <div class="col-md-3">
+                    <input type="button" onclick="setDisplay('=')" value="=" class="button btn btn-primary calculate">
+                </div>
+                <div class="col-md-3">
+                    <input type="button" onclick="setDisplay('+')" value="+" class="button btn btn-primary operator">
+                </div>
+            </div>
+            <div class="row mt-3">
+                <div class="col">
+                    <input type="button" onclick="setDisplay('c')" value="c" class="button btn btn-danger clear">
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+
+
+        function setDisplay(value) {
+            var resultField = document.getElementById("result");
+
+            if (value === "c") {
+                resultField.value = "";
+            } else {
+                if (value == "=") {
+
+                    document.getElementById("result").value = eval(resultField.value);
+                }
+                else if (value === "+" || value === "-" || value === "*" || value === "/") {
+                    var lastChar = resultField.value.slice(-1);
+
+                    if (lastChar == "+" || lastChar == "-" || lastChar == "*" || lastChar == "/") {
+                        var newdisplay = resultField.value.slice(0, -1)
+                        resultField.value = newdisplay + value;
+                    } else {
+                        resultField.value += value;
+                    }
+
+
+                }else if (value === ".") {
+                    var lastChar = resultField.value.slice(-1);
+                    if(lastChar == "."){
+                        
+                    }else{
+                        resultField.value += value;
+                    }
+                }
+
+
+
+                else {
+                    resultField.value += value;
+                }
+
+            }
+        }
+
+    </script>
+
+</body>
+
+</html>
